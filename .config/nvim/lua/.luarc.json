@@ -1,0 +1,23 @@
+{
+    "workspace.library": [
+        "/home/taiton/.config/nvim",
+        "/home/taiton/.local/share/nvim/lazy/lazy.nvim",
+        "/home/taiton/.local/share/nvim/lazy/denops-signature_help",
+        "/home/taiton/.local/share/nvim/lazy/denops-popup-preview.vim",
+        "/home/taiton/.local/share/nvim/lazy/lsp_lines.nvim",
+        "/home/taiton/.local/share/nvim/lazy/nvim-lspconfig",
+        "/home/taiton/.local/share/nvim/lazy/vim-matchup",
+        "/home/taiton/.local/share/nvim/lazy/nvim-treesitter",
+        "/home/taiton/.local/share/nvim/lazy/denops.vim",
+        "/home/taiton/.local/share/nvim/lazy/kanagawa.nvim",
+        "/home/taiton/.local/share/nvim/lazy/indent-blankline.nvim",
+        "/home/taiton/.local/share/nvim/lazy/vimdoc-ja",
+        "/usr/share/nvim/runtime",
+        "/usr/lib/nvim",
+        "/home/taiton/.local/share/nvim/lazy/vim-matchup/after",
+        "/home/taiton/.config/nvim/after",
+        "/home/taiton/.local/state/nvim/lazy/readme",
+        "${3rd}/luassert/library"
+    ],
+    "workspace.checkThirdParty": false
+}

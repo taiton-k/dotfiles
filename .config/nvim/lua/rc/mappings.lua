@@ -1,0 +1,15 @@
+vim.keymap.set({'n', 'v', 'i', 'c'}, "<C-[>", "<Esc>")
+
+vim.keymap.set('n', "<Leader>a", "ggVG")
+vim.keymap.set('n', "j", "gj")
+vim.keymap.set('n', "k", "gk")
+vim.keymap.set('n', "<Leader>w", "<Cmd>update<CR>")
+vim.keymap.set('n', "<Leader>W", "<Cmd>update<CR>")
+vim.keymap.set('n', "<Esc><Esc>", "<Cmd>set nohlsearch!<CR>")
+
+vim.keymap.set({ 'i', 'c' }, "<C-p>", "<Up>")
+vim.keymap.set({ 'i', 'c' }, "<C-n>", "<Down>")
+vim.keymap.set({ 'i', 'c' }, "<C-b>", "<Left>")
+vim.keymap.set({ 'i', 'c' }, "<C-f>", "<Right>")
+vim.keymap.set({ 'i', 'c' }, "<C-d>", "<Del>")
+vim.keymap.set({ 'i', 'c' }, "<C-h>", "<BS>", { remap = true })
