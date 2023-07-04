@@ -1,5 +1,3 @@
-vim.keymap.set({'n', 'v', 'i', 'c'}, "<C-[>", "<Esc>")
-
 vim.keymap.set('n', "<Leader>a", "ggVG")
 vim.keymap.set('n', "j", "gj")
 vim.keymap.set('n', "k", "gk")
