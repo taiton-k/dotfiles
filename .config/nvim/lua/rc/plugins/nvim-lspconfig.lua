@@ -1,8 +1,3 @@
-local lsp_available_filetype = {
-        "cpp",
-        "lua",
-}
-
 return {
         "neovim/nvim-lspconfig",
         lazy = true,
@@ -31,7 +26,11 @@ return {
                         end
                 }
         },
-        ft = lsp_available_filetype,
+        ft = {
+                "cpp",
+                "lua",
+                "rust"
+        },
         config = function()
                 vim.diagnostic.config({
                         virtual_text = false,
@@ -118,6 +117,8 @@ return {
                 })
 
                 lspconfig.clangd.setup({})
+
+                lspconfig.rust_analyzer.setup({})
 
                 vim.cmd.LspStart()
         end
