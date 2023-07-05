@@ -1,3 +1,5 @@
+vim.cmd("filetype plugin off")
+
 vim.g.loaded_2html_plugin       = 1
 vim.g.loaded_gzip               = 1
 vim.g.loaded_tar                = 1
@@ -130,7 +132,7 @@ vim.opt.virtualedit = "block"
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-_G.myFoldText = function(s, e)
+function _G.myFoldText (s, e)
         return vim.fn.getline(s) .. "  ...  " .. vim.trim(vim.fn.getline(e))
 end
 vim.opt.foldtext = "v:lua.myFoldText(v:foldstart, v:foldend)"
@@ -149,16 +151,6 @@ vim.opt.statusline = "%="
 vim.api.nvim_create_autocmd("FileType", {
         pattern = "markdown",
         callback = function()
-                vim.opt_local.tabstop     = 8
-                vim.opt_local.softtabstop = -1
-                vim.opt_local.shiftwidth  = 0
-                vim.opt_local.expandtab   = true
-                vim.opt_local.shiftround  = true
-                vim.opt_local.autoindent  = true
-                vim.opt_local.smartindent = true
-                vim.opt_local.cindent     = true
-                vim.opt_local.smarttab    = true
-
                 vim.opt_local.wrap        = true
         end
 })
