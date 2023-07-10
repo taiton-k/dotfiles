@@ -73,7 +73,9 @@ return {
                                 ["nvim-lsp"] = {
                                         mark = "lsp",
                                         forceCompletionPattern = [[\.\w*|:\w*|->\w*]],
-                                        dup = "force"
+                                        dup = "force",
+                                        converters = { "converter_kind_labels", "converter_fuzzy", "converter_remove_overlap",
+                                                "converter_truncate" }
                                 },
                                 file = {
                                         mark = "file",
@@ -101,11 +103,45 @@ return {
                                 file = {
                                         filenameChars = "[:keyword:]"
                                 },
+                                ["nvim-lsp"] = {
+                                        enableResolveItem = true,
+                                        enableAdditionalTextEdit = true,
+                                        confirmBehavior = "replace"
+                                }
                         },
                         filterParams = {
                                 converter_truncate = {
                                         maxAbbrWidth = 60,
                                         ellipsis = " ... "
+                                },
+                                converter_kind_labels = {
+                                        kindLabels = {
+                                                Text = "󰉿 Text",
+                                                Method = "󰆧 Method",
+                                                Function = "󰊕 Function",
+                                                Constructor = " Constructor",
+                                                Field = "󰜢 Field",
+                                                Variable = " Variable",
+                                                Class = "󰠱 Class",
+                                                Interface = " Interface",
+                                                Module = " Module",
+                                                Property = "󰜢 Property",
+                                                Unit = "󰑭 Unit",
+                                                Value = "󰎠 Value",
+                                                Enum = " Enum",
+                                                Keyword = "󰌋 Keyword",
+                                                Snippet = " Snippet",
+                                                Color = "󰏘 Color",
+                                                File = "󰈙 File",
+                                                Reference = "󰈇 Reference",
+                                                Folder = "󰉋 Folder",
+                                                EnumMember = " EnumMember",
+                                                Constant = "󰏿 Constant",
+                                                Struct = "󰙅 Struct",
+                                                Event = " Event",
+                                                Operator = "󰆕 Operator",
+                                                TypeParameter = "TypeParameter",
+                                        }
                                 }
                         },
                         autoCompleteEvents = {

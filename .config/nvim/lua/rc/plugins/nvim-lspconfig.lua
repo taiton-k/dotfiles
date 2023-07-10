@@ -39,38 +39,6 @@ return {
 
                 local diagnostic_is_enabled = true
 
-                local icons = {
-                        Text = "󰉿 Text",
-                        Method = "󰆧 Method",
-                        Function = "󰊕 Function",
-                        Constructor = " Constructor",
-                        Field = "󰜢 Field",
-                        Variable = " Variable",
-                        Class = "󰠱 Class",
-                        Interface = " Interface",
-                        Module = " Module",
-                        Property = "󰜢 Property",
-                        Unit = "󰑭 Unit",
-                        Value = "󰎠 Value",
-                        Enum = " Enum",
-                        Keyword = "󰌋 Keyword",
-                        Snippet = " Snippet",
-                        Color = "󰏘 Color",
-                        File = "󰈙 File",
-                        Reference = "󰈇 Reference",
-                        Folder = "󰉋 Folder",
-                        EnumMember = " EnumMember",
-                        Constant = "󰏿 Constant",
-                        Struct = "󰙅 Struct",
-                        Event = " Event",
-                        Operator = "󰆕 Operator",
-                        TypeParameter = "TypeParameter",
-                }
-                local kinds = vim.lsp.protocol.CompletionItemKind
-                for i, kind in ipairs(kinds) do
-                        kinds[i] = icons[kind] or kind
-                end
-
                 vim.api.nvim_create_autocmd("LspAttach", {
                         pattern = '*',
                         callback = function()
@@ -132,7 +100,10 @@ return {
 
                 local lspconfig = require("lspconfig")
 
+                local capabilities = require("ddc_nvim_lsp").make_client_capabilities()
+
                 lspconfig.lua_ls.setup({
+                        capabilities = capabilities,
                         settings = {
                                 Lua = {
                                         runtime = {
@@ -152,9 +123,13 @@ return {
                         }
                 })
 
-                lspconfig.clangd.setup({})
+                lspconfig.clangd.setup({
+                        capabilities = capabilities
+                })
 
-                lspconfig.rust_analyzer.setup({})
+                lspconfig.rust_analyzer.setup({
+                        capabilities = capabilities
+                })
 
                 vim.cmd.LspStart()
         end
