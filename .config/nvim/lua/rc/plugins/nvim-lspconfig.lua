@@ -100,10 +100,7 @@ return {
 
                 local lspconfig = require("lspconfig")
 
-                local capabilities = require("ddc_nvim_lsp").make_client_capabilities()
-
                 lspconfig.lua_ls.setup({
-                        capabilities = capabilities,
                         settings = {
                                 Lua = {
                                         runtime = {
@@ -123,13 +120,9 @@ return {
                         }
                 })
 
-                lspconfig.clangd.setup({
-                        capabilities = capabilities
-                })
+                lspconfig.clangd.setup({})
 
-                lspconfig.rust_analyzer.setup({
-                        capabilities = capabilities
-                })
+                lspconfig.rust_analyzer.setup({})
 
                 vim.cmd.LspStart()
         end

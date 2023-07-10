@@ -181,7 +181,6 @@ return {
                 vim.keymap.set('i', "<Tab>",
                         function()
                                 if vim.fn["pum#visible"]() then
-                                        vim.print(vim.fn["pum#visible"]())
                                         return "<Cmd>call pum#map#insert_relative(+1)<CR>"
                                 elseif vim.api.nvim_eval([[(col('.') <= 1 || getline('.')[col('.') - 2] =~# '\s')]]) == 1 then
                                         return "<Tab>"
