@@ -38,6 +38,39 @@ return {
                 })
 
                 local diagnostic_is_enabled = true
+
+                local icons = {
+                        Text = "󰉿 Text",
+                        Method = "󰆧 Method",
+                        Function = "󰊕 Function",
+                        Constructor = " Constructor",
+                        Field = "󰜢 Field",
+                        Variable = " Variable",
+                        Class = "󰠱 Class",
+                        Interface = " Interface",
+                        Module = " Module",
+                        Property = "󰜢 Property",
+                        Unit = "󰑭 Unit",
+                        Value = "󰎠 Value",
+                        Enum = " Enum",
+                        Keyword = "󰌋 Keyword",
+                        Snippet = " Snippet",
+                        Color = "󰏘 Color",
+                        File = "󰈙 File",
+                        Reference = "󰈇 Reference",
+                        Folder = "󰉋 Folder",
+                        EnumMember = " EnumMember",
+                        Constant = "󰏿 Constant",
+                        Struct = "󰙅 Struct",
+                        Event = " Event",
+                        Operator = "󰆕 Operator",
+                        TypeParameter = "TypeParameter",
+                }
+                local kinds = vim.lsp.protocol.CompletionItemKind
+                for i, kind in ipairs(kinds) do
+                        kinds[i] = icons[kind] or kind
+                end
+
                 vim.api.nvim_create_autocmd("LspAttach", {
                         pattern = '*',
                         callback = function()
@@ -76,22 +109,24 @@ return {
 
                                 vim.keymap.set('n', "<C-k>", vim.diagnostic.open_float, { buffer = true })
                                 vim.keymap.set('n', "K", vim.lsp.buf.hover, { buffer = true })
+
+                                local function wrapper(func)
+                                        return function()
+                                                func()
+                                        end
+                                end
+
+                                vim.api.nvim_create_user_command("LspRename", wrapper(vim.lsp.buf.rename), {})
+                                vim.api.nvim_create_user_command("LspDeclaration", wrapper(vim.lsp.buf.declaration), {})
+                                vim.api.nvim_create_user_command("LspTypeDefinition",
+                                        wrapper(vim.lsp.buf.type_definition), {})
+                                vim.api.nvim_create_user_command("LspImplementation", wrapper(vim.lsp.buf.implementation),
+                                        {})
+                                vim.api.nvim_create_user_command("LspDefinition", wrapper(vim.lsp.buf.definition), {})
+                                vim.api.nvim_create_user_command("LspHover", wrapper(vim.lsp.buf.hover), {})
+                                vim.api.nvim_create_user_command('LspFormat', wrapper(vim.lsp.buf.format), {})
                         end
                 })
-
-                local function wrapper(func)
-                        return function()
-                                func()
-                        end
-                end
-
-                vim.api.nvim_create_user_command("LspRename", wrapper(vim.lsp.buf.rename), {})
-                vim.api.nvim_create_user_command("LspDeclaration", wrapper(vim.lsp.buf.declaration), {})
-                vim.api.nvim_create_user_command("LspTypeDefinition", wrapper(vim.lsp.buf.type_definition), {})
-                vim.api.nvim_create_user_command("LspImplementation", wrapper(vim.lsp.buf.implementation), {})
-                vim.api.nvim_create_user_command("LspDefinition", wrapper(vim.lsp.buf.definition), {})
-                vim.api.nvim_create_user_command("LspHover", wrapper(vim.lsp.buf.hover), {})
-                vim.api.nvim_create_user_command('LspFormat', wrapper(vim.lsp.buf.format), {})
 
 
 
@@ -108,6 +143,7 @@ return {
                                         },
                                         workspace = {
                                                 library = vim.api.nvim_get_runtime_file('', true),
+                                                checkThirdParty = false
                                         },
                                         telemetry = {
                                                 enable = false
