@@ -17,7 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
         require("rc.plugins.treesitter"),
-        require("rc.plugins.kanagawa"),
         require("rc.plugins.indent-blankline"),
         require("rc.plugins.ddc"),
         require("rc.plugins.ddu"),
@@ -118,5 +117,19 @@ require("lazy").setup({
                                 border = "rounded"
                         }
                 }
+        },
+        {
+                "uga-rosa/ccc.nvim"
+        },
+        {
+                "Exafunction/codeium.vim",
+                lazy = true,
+                config = function ()
+                        vim.g.codeium_disable_bindings = 1
+                        vim.g.codeium_render = false
+                        vim.g.codeium_filetypes = {
+                                ["ddu-ff-filter"] = false
+                        }
+                end
         }
 })
