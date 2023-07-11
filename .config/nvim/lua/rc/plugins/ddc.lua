@@ -10,15 +10,26 @@ return {
                         lazy = true,
                         config = function()
                                 vim.fn["pum#set_option"]({
+                                        min_width = 25,
                                         padding = true,
                                         scrollbar_char = ' ',
                                         use_setline = true
                                 })
+
+                                vim.api.nvim_create_autocmd("FileType", {
+                                        pattern = "ddu-ff-filter",
+                                        callback = function()
+                                                vim.fn["pum#set_buffer_option"]({
+                                                        direction = "above"
+                                                })
+                                        end
+                                })
                         end
                 },
                 "Shougo/ddc-ui-pum",
-                "Shougo/ddc-source-nvim-lsp",
+                "Shougo/ddc-source-codeium",
                 "Shougo/ddc-source-around",
+                "Shougo/ddc-source-nvim-lsp",
                 "LumaKernel/ddc-source-file",
                 "Shougo/ddc-source-nvim-lua",
                 "Shougo/ddc-source-cmdline",
@@ -26,9 +37,14 @@ return {
                 "Shougo/ddc-source-cmdline-history",
                 "Shougo/ddc-source-input",
                 "Shougo/ddc-source-line",
-                "Shougo/ddc-converter_remove_overlap",
-                "matsui54/ddc-converter_truncate",
+                "Shougo/ddc-filter-matcher_head",
+                "Shougo/ddc-filter-matcher_length",
+                "Shougo/ddc-filter-matcher_prefix",
                 "Shougo/ddc-filter-matcher_vimregexp",
+                "Shougo/ddc-filter-sorter_rank",
+                "Shougo/ddc-converter_remove_overlap",
+                "Shougo/ddc-filter-converter_truncate_abbr",
+                -- "matsui54/ddc-converter_truncate",
                 "tani/ddc-fuzzy"
         },
         config = function()
@@ -37,14 +53,14 @@ return {
                 vim.fn["ddc#custom#patch_global"]({
                         ui = "pum",
                         backspaceCompletion = true,
-                        sources = { "around", "file" },
+                        sources = { "codeium", "around", "file" },
                         sourceOptions = {
                                 _ = {
                                         ignoreCase = true,
-                                        matchers = { "matcher_fuzzy" },
-                                        sorters = { "sorter_fuzzy" },
+                                        matchers = { "matcher_head", "matcher_prefix", "matcher_length", "matcher_fuzzy" },
+                                        sorters = { "sorter_rank", "sorter_fuzzy" },
                                         converters = { "converter_fuzzy", "converter_remove_overlap",
-                                                "converter_truncate" }
+                                                "converter_truncate_abbr" }
                                 },
                                 around = {
                                         mark = 'A'
@@ -61,6 +77,12 @@ return {
                                         forceCompletionPattern = [[\S/\S*|\.\w*]],
                                         dup = "force"
                                 },
+                                codeium = {
+                                        mark = "cod",
+                                        matchers = { "matcher_length" },
+                                        minAutoCompleteLength = 0,
+                                        isVolatile = true
+                                },
                                 input = {
                                         mark = "input",
                                         forceCompletionPattern = [[\S/\S*]],
@@ -74,8 +96,7 @@ return {
                                         mark = "lsp",
                                         forceCompletionPattern = [[\.\w*|:\w*|->\w*]],
                                         dup = "force",
-                                        converters = { "converter_kind_labels", "converter_fuzzy", "converter_remove_overlap",
-                                                "converter_truncate" }
+                                        converters = { "converter_kind_labels" }
                                 },
                                 file = {
                                         mark = "file",
@@ -102,45 +123,39 @@ return {
                                 },
                                 file = {
                                         filenameChars = "[:keyword:]"
-                                },
-                                ["nvim-lsp"] = {
-                                        enableResolveItem = true,
-                                        enableAdditionalTextEdit = true,
-                                        confirmBehavior = "replace"
                                 }
                         },
                         filterParams = {
-                                converter_truncate = {
-                                        maxAbbrWidth = 60,
-                                        ellipsis = " ... "
+                                converter_truncate_abbr = {
+                                        maxAbbrWidth = 60
                                 },
                                 converter_kind_labels = {
                                         kindLabels = {
-                                                Text = "󰉿 Text",
-                                                Method = "󰆧 Method",
-                                                Function = "󰊕 Function",
-                                                Constructor = " Constructor",
-                                                Field = "󰜢 Field",
-                                                Variable = " Variable",
-                                                Class = "󰠱 Class",
-                                                Interface = " Interface",
-                                                Module = " Module",
-                                                Property = "󰜢 Property",
-                                                Unit = "󰑭 Unit",
-                                                Value = "󰎠 Value",
-                                                Enum = " Enum",
-                                                Keyword = "󰌋 Keyword",
-                                                Snippet = " Snippet",
-                                                Color = "󰏘 Color",
-                                                File = "󰈙 File",
-                                                Reference = "󰈇 Reference",
-                                                Folder = "󰉋 Folder",
-                                                EnumMember = " EnumMember",
-                                                Constant = "󰏿 Constant",
-                                                Struct = "󰙅 Struct",
-                                                Event = " Event",
-                                                Operator = "󰆕 Operator",
-                                                TypeParameter = "TypeParameter",
+                                                Text          = "󰉿 ",
+                                                Method        = "󰆧 ",
+                                                Function      = "󰊕 ",
+                                                Constructor   = " ",
+                                                Field         = "󰜢 ",
+                                                Variable      = " ",
+                                                Class         = "󰠱 ",
+                                                Interface     = " ",
+                                                Module        = " ",
+                                                Property      = "󰜢 ",
+                                                Unit          = "󰑭 ",
+                                                Value         = "󰎠 ",
+                                                Enum          = " ",
+                                                Keyword       = "󰌋 ",
+                                                Snippet       = " ",
+                                                Color         = "󰏘 ",
+                                                File          = "󰈙 ",
+                                                Reference     = "󰈇 ",
+                                                Folder        = "󰉋 ",
+                                                EnumMember    = " ",
+                                                Constant      = "󰏿 ",
+                                                Struct        = "󰙅 ",
+                                                Event         = " ",
+                                                Operator      = "󰆕 ",
+                                                TypeParameter = "TP",
                                         }
                                 }
                         },
@@ -159,7 +174,7 @@ return {
                                 ['?'] = { "around", "line" },
                                 ['-'] = { "around", "line" },
                                 ['='] = { "input" }
-                        },
+                        }
                 })
 
                 vim.fn["ddc#custom#patch_filetype"]("ddu-ff-filter", {
@@ -169,11 +184,11 @@ return {
                 })
 
                 vim.fn["ddc#custom#patch_filetype"]({ "cpp" }, {
-                        sources = { "nvim-lsp", "around" }
+                        sources = { "codeium", "nvim-lsp", "around" }
                 })
 
                 vim.fn["ddc#custom#patch_filetype"]("lua", {
-                        sources = { "nvim-lua", "nvim-lsp", "around" }
+                        sources = { "codeium", "nvim-lua", "nvim-lsp", "around" }
                 })
 
 
@@ -219,13 +234,13 @@ return {
                                 if vim.fn["pum#visible"]() then
                                         return "<Cmd>call pum#map#cancel()<CR>"
                                 else
-                                        return "<C-e>"
+                                        return "<End>"
                                 end
                         end, {
                                 expr = true,
                         }
                 )
-                vim.keymap.set({ 'i', 'c' }, "<C-l>", "ddc#map#extend('<C-e>')", {
+                vim.keymap.set({ 'i', 'c' }, "<C-l>", "ddc#map#manualcomplete()", {
                         expr = true
                 })
 

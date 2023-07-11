@@ -1,7 +1,7 @@
 return {
         "lukas-reineke/indent-blankline.nvim",
         config = function ()
-                require('indent_blankline').setup({
+                require("indent_blankline").setup({
                         char_highlight_list = {
                                 "Special",
                                 "Function",
@@ -13,8 +13,8 @@ return {
                                 "Type",
                         },
                         show_trailing_blankline_indent = false,
-                        filetype_exclude = { 'help' },
-                        buftype_exclude = { 'terminal' },
+                        filetype_exclude = { "help", "" },
+                        buftype_exclude = { "terminal" },
                 })
 
                 vim.api.nvim_create_autocmd("WinScrolled", {

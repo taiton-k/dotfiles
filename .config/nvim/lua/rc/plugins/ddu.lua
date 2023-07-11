@@ -23,10 +23,10 @@ return {
         config = function()
                 require("denops-lazy").load("ddu.vim")
 
-                local winCol = math.floor(vim.o.columns / 8)
-                local winWidth = math.floor(vim.o.columns * 3 / 8)
-                local winRow = math.floor(vim.o.lines / 4)
                 local winHeight = math.floor(vim.o.lines / 2)
+                local winWidth = math.floor(vim.o.columns * 3 / 8)
+                local winRow = math.floor(vim.o.lines / 4) - 3
+                local winCol = math.floor(vim.o.columns / 8)
 
                 vim.fn["ddu#custom#patch_global"]({
                         ui = "ff",
@@ -35,6 +35,7 @@ return {
                                         autoAction = {
                                                 name = "preview"
                                         },
+                                        startAutoAction = true,
                                         filterFloatingPosition = "bottom",
                                         floatingBorder = "rounded",
                                         floatingTitlePos = "center",
@@ -45,14 +46,14 @@ return {
                                         previewFloatingTitlePos = "center",
                                         previewFloatingZindex = 51,
                                         prompt = '>',
-                                        winCol = winCol,
-                                        winWidth = winWidth,
+                                        winHeight = winHeight,
+                                        winWidth = winWidth * 2 + 2,
                                         winRow = winRow,
-                                        winHeight = winHeight - 2,
-                                        previewCol = winCol + winWidth + 2,
-                                        previewRow = winRow + winHeight,
+                                        winCol = winCol,
                                         previewHeight = winHeight,
-                                        previewWidth = winWidth + 4
+                                        previewWidth = winWidth + 2,
+                                        previewRow = winRow + winHeight + 2,
+                                        previewCol = winCol + winWidth
                                 }
                         },
                         kindOptions = {
@@ -132,6 +133,9 @@ return {
                                                 buffer = true
                                         })
                                 vim.keymap.set('n', "<CR>", "<Cmd>call ddu#ui#do_action('leaveFilterWindow')<CR>", {
+                                        buffer = true
+                                })
+                                vim.keymap.set('n', "q", "<Cmd>call ddu#ui#do_action('quit')<CR>", {
                                         buffer = true
                                 })
                         end
