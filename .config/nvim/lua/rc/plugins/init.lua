@@ -119,7 +119,20 @@ require("lazy").setup({
                 }
         },
         {
-                "uga-rosa/ccc.nvim"
+                "uga-rosa/ccc.nvim",
+                config = function ()
+                        local ccc = require("ccc")
+                        ccc.setup({
+                                highlighter = {
+                                        auto_enable = true
+                                },
+                                inputs = {
+                                        ccc.input.rgb,
+                                        ccc.input.hsl,
+                                        ccc.input.hsv
+                                }
+                        })
+                end
         },
         {
                 "Exafunction/codeium.vim",
