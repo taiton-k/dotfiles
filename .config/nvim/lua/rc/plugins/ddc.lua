@@ -240,7 +240,7 @@ return {
                                 expr = true,
                         }
                 )
-                vim.keymap.set({ 'i', 'c' }, "<C-l>", "ddc#map#manualcomplete()", {
+                vim.keymap.set({ 'i', 'c' }, "<C-l>", "ddc#map#manual_complete()", {
                         expr = true
                 })
 
