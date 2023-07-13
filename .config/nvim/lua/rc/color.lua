@@ -7,16 +7,16 @@ local palette = {
         base05 = "#d1d1dd", -- Default Foreground, Caret, Delimiters, Operators
         base06 = "#e2e2e9", -- Light Foreground (Not often used)
         base07 = "#f4f4f7", -- Light Background (Not often used)
-        base08 = "#b3b3f9", -- Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-        base09 = "#b0d7fd", -- Integers, Boolean, Constants, XML Attributes, Markup Link Url
-        base0A = "#b0b0fd", -- Classes, Markup Bold, Search Text Background
-        base0B = "#d6aefd", -- Strings, Inherited Class, Markup Code, Diff Inserted
-        base0C = "#c3b0fd", -- Support, Regular Expressions, Escape Characters, Markup Quotes
-        base0D = "#b0c3fd", -- Functions, Methods, Attribute IDs, Headings
-        base0E = "#aeaefd", -- Keywords, Storage, Selector, Markup Italic, Diff Changed
-        base0F = "#b0c3fd", -- Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
+        base08 = "#afaffd", -- Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+        base09 = "#afd6fd", -- Integers, Boolean, Constants, XML Attributes, Markup Link Url
+        base0A = "#b8b8f4", -- Classes, Markup Bold, Search Text Background
+        base0B = "#d6affd", -- Strings, Inherited Class, Markup Code, Diff Inserted
+        base0C = "#d6affd", -- Support, Regular Expressions, Escape Characters, Markup Quotes
+        base0D = "#b8d6f4", -- Functions, Methods, Attribute IDs, Headings
+        base0E = "#afaffd", -- Keywords, Storage, Selector, Markup Italic, Diff Changed
+        base0F = "#b8b8f4", -- Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 
-        error = "#ff9f9f",
+        error = "#fda1a1",
         warn = "#ffcf9d",
         info = "#aed7ff",
 }
@@ -91,39 +91,52 @@ hl("WinBar", { fg = palette.base04, bg = palette.base02 })
 hl("WinBarNC", { fg = palette.base03, bg = palette.base01 })
 hl("WinSeparator", { fg = palette.base02 })
 
+
+
 hl("Comment", { fg = palette.base03 })
+
 hl("Constant", { fg = palette.base09, bold = true })
 hl("String", { fg = palette.base0B })
 hl("Character", { link = "String" })
 hl("Number", { fg = palette.base09 })
 hl("Boolean", { fg = palette.base09 })
-hl("Identifier", { fg = palette.base08 })
-hl("Function", { fg = palette.base0D })
 hl("Float", { fg = palette.base09 })
+
+hl("Identifier", { fg = palette.base08 })
+hl("Function", { fg = palette.base0D, italic = true })
+
 hl("Statement", { fg = palette.base0E, italic = true })
-hl("Conditional", { link = "Statement"})
+hl("Conditional", { link = "Statement" })
 hl("Repeat", { link = "Statement" })
 hl("Label", { fg = palette.base0A, bold = true })
 hl("Operator", { fg = palette.base05 })
 hl("Keyword", { link = "Statement" })
 hl("Exception", { link = "Statement" })
+
 hl("PreProc", { fg = palette.base0A })
 hl("Include", { link = "PreProc" })
 hl("Define", { link = "PreProc" })
 hl("Macro", { link = "Constant" })
 hl("PreCondit", { link = "PreProc" })
+
 hl("Type", { fg = palette.base0A, bold = true })
 hl("StorageClass", { link = "Type" })
 hl("Structure", { link = "Type" })
 hl("Typedef", { link = "Type" })
-hl("Special", { fg = palette.base0C, bold = true, italic = true })
+
+hl("Special", { link = "Constant" })
 hl("SpecialChar", { fg = palette.base0C, bold = true, italic = true })
 hl("Tag", { fg = palette.base0A })
 hl("Delimiter", { fg = palette.base0F })
-hl("SpecialComment", { fg = palette.base0C, bold = true, italic = true })
+hl("SpecialComment", { fg = palette.base05, bold = true })
 hl("Debug", { fg = palette.base08 })
+
 hl("Underlined", { underline = true })
+hl("Bold", { bold = true })
+hl("Italic", { italic = true })
+
 hl("Ignore", { fg = palette.base0C })
+
 hl("Error", { fg = palette.base00, bg = palette.error })
 hl("Todo", { fg = palette.base0A, bg = palette.base01 })
 
