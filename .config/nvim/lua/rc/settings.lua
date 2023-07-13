@@ -132,9 +132,7 @@ vim.opt.virtualedit = "block"
 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-function _G.myFoldText (s, e)
-        return vim.fn.getline(s) .. "  ...  " .. vim.trim(vim.fn.getline(e))
-end
+vim.opt.foldtext = "getline(v:foldstart) . ' ... ' . trim(getline(v:foldend))"
 vim.opt.foldtext = "v:lua.myFoldText(v:foldstart, v:foldend)"
 vim.opt.foldlevel = 1000
 vim.opt.foldopen = {
@@ -151,6 +149,6 @@ vim.opt.statusline = "%="
 vim.api.nvim_create_autocmd("FileType", {
         pattern = "markdown",
         callback = function()
-                vim.opt_local.wrap        = true
+                vim.opt_local.wrap = true
         end
 })
