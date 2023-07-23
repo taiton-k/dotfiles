@@ -108,13 +108,17 @@ require("lazy").setup({
                         insert_mappings = true,
                         terminal_mappings = true,
                         highlights = {
+                                NormalFloat = {
+                                        link = "NormalFloat"
+                                },
                                 FloatBorder = {
                                         link = "WinSeparator"
                                 }
                         },
                         direction = "float",
                         float_opts = {
-                                border = "rounded"
+                                border = "rounded",
+                                winblend = 15
                         }
                 }
         },

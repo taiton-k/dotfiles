@@ -37,11 +37,7 @@ return {
                 "Shougo/ddc-source-cmdline-history",
                 "Shougo/ddc-source-input",
                 "Shougo/ddc-source-line",
-                "Shougo/ddc-filter-matcher_head",
-                "Shougo/ddc-filter-matcher_length",
-                "Shougo/ddc-filter-matcher_prefix",
                 "Shougo/ddc-filter-matcher_vimregexp",
-                "Shougo/ddc-filter-sorter_rank",
                 "Shougo/ddc-converter_remove_overlap",
                 "Shougo/ddc-filter-converter_truncate_abbr",
                 -- "matsui54/ddc-converter_truncate",
@@ -57,8 +53,8 @@ return {
                         sourceOptions = {
                                 _ = {
                                         ignoreCase = true,
-                                        matchers = { "matcher_head", "matcher_prefix", "matcher_length", "matcher_fuzzy" },
-                                        sorters = { "sorter_rank", "sorter_fuzzy" },
+                                        matchers = { "matcher_fuzzy" },
+                                        sorters = { "sorter_fuzzy" },
                                         converters = { "converter_fuzzy", "converter_remove_overlap",
                                                 "converter_truncate_abbr" }
                                 },
@@ -79,7 +75,7 @@ return {
                                 },
                                 codeium = {
                                         mark = "cod",
-                                        matchers = { "matcher_length" },
+                                        matchers = { "matcher_fuzzy" },
                                         minAutoCompleteLength = 0,
                                         isVolatile = true
                                 },
@@ -123,6 +119,9 @@ return {
                                 },
                                 file = {
                                         filenameChars = "[:keyword:]"
+                                },
+                                ["nvim-lsp"] = {
+                                        confirmBehavior = "replace"
                                 }
                         },
                         filterParams = {
@@ -240,7 +239,7 @@ return {
                                 expr = true,
                         }
                 )
-                vim.keymap.set({ 'i', 'c' }, "<C-l>", function ()
+                vim.keymap.set({ 'i', 'c' }, "<C-l>", function()
                         vim.fn["pum#map#cancel"]()
                         return vim.fn["ddc#map#manual_complete"]()
                 end, {

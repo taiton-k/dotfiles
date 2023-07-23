@@ -145,7 +145,7 @@ return {
                 local set = vim.keymap.set
                 set('n', "<Leader>d", "<Cmd>Ddu source<CR>")
                 set('n', "<Leader>df", "<Cmd>Ddu file_rec<CR>")
-                set('n', "<Leader>dfo", "<Cmd>Ddu file_old<CR>")
+                set('n', "<Leader>do", "<Cmd>Ddu file_old<CR>")
                 set('n', "<Leader>dh", "<Cmd>Ddu help<CR>")
                 set('n', "<Leader>dl", "<Cmd>Ddu lsp_diagnostic<CR>")
         end

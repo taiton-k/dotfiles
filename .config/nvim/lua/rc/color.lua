@@ -21,6 +21,12 @@ local palette = {
         info = "#aed7ff",
 }
 
+if "Transparent" then
+        palette.bg = nil
+else
+        palette.bg = "#1e1e29"
+end
+
 local function hl(name, table)
         vim.api.nvim_set_hl(0, name, table)
 end
@@ -41,7 +47,7 @@ hl("DiffDelete", { fg = palette.base08, bg = palette.base01 })
 hl("DiffText", { fg = palette.base0D, bg = palette.base01 })
 hl("Directory", { fg = palette.base0D })
 hl("EndOfBuffer", { fg = palette.base03 })
-hl("ErrorMsg", { fg = palette.error, bg = palette.base00 })
+hl("ErrorMsg", { fg = palette.error, bg = palette.bg})
 hl("FoldColumn", { fg = palette.base0C, bg = palette.base01 })
 hl("Folded", { fg = palette.base03, bg = palette.base01 })
 hl("IncSearch", { fg = palette.base01, bg = palette.base09 })
@@ -53,13 +59,13 @@ hl("LineNrBelow", { fg = palette.base03, bg = palette.base01 })
 hl("MatchParen", { bg = palette.base02 })
 hl("ModeMsg", { fg = palette.base0B })
 hl("MoreMsg", { fg = palette.base0B })
-hl("MsgArea", { fg = palette.base05, bg = palette.base00 })
+hl("MsgArea", { fg = palette.base05, bg = palette.bg })
 hl("MsgSeparator", { fg = palette.base04, bg = palette.base02 })
 hl("NonText", { fg = palette.base03 })
-hl("Normal", { fg = palette.base05, bg = palette.base00 })
+hl("Normal", { fg = palette.base05, bg = palette.bg })
 hl("NormalFloat", { fg = palette.base05, bg = palette.base00 })
-hl("FloatBorder", { link = "WinSeparator" })
-hl("NormalNC", { fg = palette.base05, bg = palette.base00 })
+hl("FloatBorder", { fg = palette.base02, bg = palette.bg })
+hl("NormalNC", { fg = palette.base05, bg = palette.bg })
 hl("PMenu", { fg = palette.base05, bg = palette.base01 })
 hl("PMenuSbar", { bg = palette.base02 })
 hl("PMenuSel", { fg = palette.base01, bg = palette.base05 })

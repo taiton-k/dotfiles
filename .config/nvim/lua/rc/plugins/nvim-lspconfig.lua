@@ -32,6 +32,8 @@ return {
                 "rust"
         },
         config = function()
+                require("vim.lsp.log").set_level(vim.log.levels.WARN)
+
                 vim.diagnostic.config({
                         virtual_text = false,
                         update_in_insert = false
@@ -122,7 +124,15 @@ return {
 
                 lspconfig.clangd.setup({})
 
-                lspconfig.rust_analyzer.setup({})
+                lspconfig.rust_analyzer.setup({
+                        ["rust-analyzer"] = {
+                                check = {
+                                        overrideCommand = {
+                                                "cargo", "check", "--message-format=json"
+                                        }
+                                }
+                        }
+                })
 
                 vim.cmd.LspStart()
         end
