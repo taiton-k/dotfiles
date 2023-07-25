@@ -182,7 +182,7 @@ return {
                         specialBufferCompletion = true
                 })
 
-                vim.fn["ddc#custom#patch_filetype"]({ "cpp" }, {
+                vim.fn["ddc#custom#patch_filetype"]({ "cpp", "rust" }, {
                         sources = { "codeium", "nvim-lsp", "around" }
                 })
 

@@ -128,7 +128,7 @@ require("lazy").setup({
                         local ccc = require("ccc")
                         ccc.setup({
                                 highlighter = {
-                                        auto_enable = true
+                                        auto_enable = false
                                 },
                                 inputs = {
                                         ccc.input.rgb,

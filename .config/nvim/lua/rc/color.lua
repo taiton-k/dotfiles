@@ -13,7 +13,7 @@ local palette = {
         base0B = "#d6affd", -- Strings, Inherited Class, Markup Code, Diff Inserted
         base0C = "#d6affd", -- Support, Regular Expressions, Escape Characters, Markup Quotes
         base0D = "#b8d6f4", -- Functions, Methods, Attribute IDs, Headings
-        base0E = "#afaffd", -- Keywords, Storage, Selector, Markup Italic, Diff Changed
+        base0E = "#b8b8f4", -- Keywords, Storage, Selector, Markup Italic, Diff Changed
         base0F = "#b8b8f4", -- Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 
         error = "#fda1a1",
@@ -162,6 +162,7 @@ hl("DiagnosticUnderlineWarn", { underline = true, sp = palette.warn })
 hl("@lsp.type.namespace", { link = "Identifier" })
 hl("@lsp.mod.readonly", { link = "Constant" })
 
+--[[
 vim.g.terminal_color_0 = palette.base00
 vim.g.terminal_color_1 = palette.base08
 vim.g.terminal_color_2 = palette.base0B
@@ -178,3 +179,4 @@ vim.g.terminal_color_12 = palette.base0D
 vim.g.terminal_color_13 = palette.base0E
 vim.g.terminal_color_14 = palette.base0C
 vim.g.terminal_color_15 = palette.base07
+]]--

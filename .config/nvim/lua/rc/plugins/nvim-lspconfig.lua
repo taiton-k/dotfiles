@@ -34,6 +34,38 @@ return {
         config = function()
                 require("vim.lsp.log").set_level(vim.log.levels.WARN)
 
+                local icons = {
+                        Text          = "󰉿 ",
+                        Method        = "󰆧 ",
+                        Function      = "󰊕 ",
+                        Constructor   = " ",
+                        Field         = "󰜢 ",
+                        Variable      = " ",
+                        Class         = "󰠱 ",
+                        Interface     = " ",
+                        Module        = " ",
+                        Property      = "󰜢 ",
+                        Unit          = "󰑭 ",
+                        Value         = "󰎠 ",
+                        Enum          = " ",
+                        Keyword       = "󰌋 ",
+                        Snippet       = " ",
+                        Color         = "󰏘 ",
+                        File          = "󰈙 ",
+                        Reference     = "󰈇 ",
+                        Folder        = "󰉋 ",
+                        EnumMember    = " ",
+                        Constant      = "󰏿 ",
+                        Struct        = "󰙅 ",
+                        Event         = " ",
+                        Operator      = "󰆕 ",
+                        TypeParameter = "TP",
+                }
+                local kinds = vim.lsp.protocol.CompletionItemKind
+                for i, kind in ipairs(kinds) do
+                        kinds[i] = icons[kind] or kind
+                end
+
                 vim.diagnostic.config({
                         virtual_text = false,
                         update_in_insert = false
@@ -125,10 +157,16 @@ return {
                 lspconfig.clangd.setup({})
 
                 lspconfig.rust_analyzer.setup({
-                        ["rust-analyzer"] = {
-                                check = {
-                                        overrideCommand = {
-                                                "cargo", "check", "--message-format=json"
+                        settings = {
+                                ["rust-analyzer"] = {
+                                        checkOnSave = true,
+                                        check = {
+                                                command = "clippy"
+                                        },
+                                        diagnostics = {
+                                                experimental = {
+                                                        enable = true
+                                                }
                                         }
                                 }
                         }
