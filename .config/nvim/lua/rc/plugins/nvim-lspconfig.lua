@@ -76,6 +76,8 @@ return {
                 vim.api.nvim_create_autocmd("LspAttach", {
                         pattern = '*',
                         callback = function()
+                                vim.lsp.inlay_hint(0)
+
                                 vim.api.nvim_create_autocmd("InsertEnter", {
                                         buffer = 0,
                                         callback = function()
