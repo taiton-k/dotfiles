@@ -16,15 +16,20 @@ local palette = {
         base0E = "#b8b8f4", -- Keywords, Storage, Selector, Markup Italic, Diff Changed
         base0F = "#b8b8f4", -- Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 
-        error = "#fda1a1",
-        warn = "#ffcf9d",
-        info = "#aed7ff",
+        red = "#ffadad",
+        orange = "#ffd6ac",
+        yellow = "#ffffac",
+        green = "#adffad",
+        teal = "#adffff",
+        skyblue = "#aed7ff",
+        blue = "#adadff",
 }
 
-if "Transparent" then
+local transparent = true
+if transparent then
         palette.bg = nil
 else
-        palette.bg = "#1e1e29"
+        palette.bg = palette.base00
 end
 
 local function hl(name, table)
@@ -47,7 +52,7 @@ hl("DiffDelete", { fg = palette.base08, bg = palette.base01 })
 hl("DiffText", { fg = palette.base0D, bg = palette.base01 })
 hl("Directory", { fg = palette.base0D })
 hl("EndOfBuffer", { fg = palette.base03 })
-hl("ErrorMsg", { fg = palette.error, bg = palette.bg})
+hl("ErrorMsg", { fg = palette.red, bg = palette.bg })
 hl("FoldColumn", { fg = palette.base0C, bg = palette.base01 })
 hl("Folded", { fg = palette.base03, bg = palette.base01 })
 hl("IncSearch", { fg = palette.base01, bg = palette.base09 })
@@ -90,7 +95,7 @@ hl("TermCursorNC", { bg = nil, reverse = true })
 hl("Title", { fg = palette.base0D })
 hl("Visual", { bg = palette.base02 })
 hl("VisualNOS", { fg = palette.base08 })
-hl("WarningMsg", { fg = palette.warn })
+hl("WarningMsg", { fg = palette.orange })
 hl("Whitespace", { fg = palette.base03 })
 hl("WildMenu", { fg = palette.base08, bg = palette.base0A })
 hl("WinBar", { fg = palette.base04, bg = palette.base02 })
@@ -143,21 +148,30 @@ hl("Italic", { italic = true })
 
 hl("Ignore", { fg = palette.base0C })
 
-hl("Error", { fg = palette.base00, bg = palette.error })
+hl("Error", { fg = palette.base00, bg = palette.red })
 hl("Todo", { fg = palette.base0A, bg = palette.base01 })
 
-hl("DiagnosticError", { fg = palette.error })
-hl("DiagnosticInfo", { fg = palette.info })
-hl("DiagnosticWarn", { fg = palette.warn })
-hl("DiagnosticFloatingError", { fg = palette.error, bg = palette.base01 })
-hl("DiagnosticFloatingInfo", { fg = palette.info, bg = palette.base01 })
-hl("DiagnosticFloatingWarn", { fg = palette.warn, bg = palette.base01 })
-hl("DiagnosticSignError", { link = "DiagnosticFloatingError" })
-hl("DiagnosticSignInfo", { link = "DiagnosticFloatingInfo" })
-hl("DiagnosticSignWarn", { link = "DiagnosticFloatingWarn" })
-hl("DiagnosticUnderlineError", { underline = true, sp = palette.error })
-hl("DiagnosticUnderlineInfo", { underline = true, sp = palette.info })
-hl("DiagnosticUnderlineWarn", { underline = true, sp = palette.warn })
+hl("DiagnosticError", { fg = palette.red })
+hl("DiagnosticWarn", { fg = palette.orange })
+hl("DiagnosticInfo", { fg = palette.teal })
+hl("DiagnosticHint", { fg = palette.skyblue })
+hl("DiagnositcOk", { fg = palette.green })
+hl("DiagnosticUnderlineError", { underline = true, sp = palette.red })
+hl("DiagnosticUnderlineWarn", { underline = true, sp = palette.orange })
+hl("DiagnosticUnderlineInfo", { underline = true, sp = palette.teal })
+hl("DiagnosticUnderlineHint", { underline = true, sp = palette.skyblue })
+hl("DiagnosticUnderlineOk", { underline = true, sp = palette.green })
+hl("DiagnosticFloatingError", { link = "DiagnosticError" })
+hl("DiagnosticFloatingWarn", { link = "DiagnosticWarn" })
+hl("DiagnosticFloatingInfo", { link = "DiagnosticInfo" })
+hl("DiagnosticFloatingHint", { link = "DiagnosticHint" })
+hl("DiagnositcFloatingOk", { link = "DiagnosticOk" })
+hl("DiagnosticSignError", { link = "DiagnosticError" })
+hl("DiagnosticSignWarn", { link = "DiagnosticWarn" })
+hl("DiagnosticSignInfo", { link = "DiagnosticInfo" })
+hl("DiagnosticSignHint", { link = "DiagnosticHint" })
+hl("DiagnositcSignOk", { link = "DiagnosticError" })
+
 
 hl("@lsp.type.namespace", { link = "Identifier" })
 hl("@lsp.mod.readonly", { link = "Constant" })
@@ -179,4 +193,5 @@ vim.g.terminal_color_12 = palette.base0D
 vim.g.terminal_color_13 = palette.base0E
 vim.g.terminal_color_14 = palette.base0C
 vim.g.terminal_color_15 = palette.base07
-]]--
+]]
+--

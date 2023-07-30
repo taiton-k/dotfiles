@@ -76,14 +76,14 @@ return {
                 vim.api.nvim_create_autocmd("LspAttach", {
                         pattern = '*',
                         callback = function()
-                                vim.lsp.inlay_hint(0)
-
                                 vim.api.nvim_create_autocmd("InsertEnter", {
                                         buffer = 0,
                                         callback = function()
                                                 if diagnostic_is_enabled then
                                                         vim.diagnostic.disable(0)
                                                 end
+
+                                                vim.lsp.inlay_hint(0, false)
                                         end
                                 })
 
@@ -93,6 +93,8 @@ return {
                                                 if diagnostic_is_enabled then
                                                         vim.diagnostic.enable(0)
                                                 end
+
+                                                vim.lsp.inlay_hint(0, true)
                                         end
                                 })
 
