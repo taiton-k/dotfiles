@@ -112,13 +112,12 @@ require("lazy").setup({
                                         link = "NormalFloat"
                                 },
                                 FloatBorder = {
-                                        link = "WinSeparator"
+                                        link = "FloatBorder"
                                 }
                         },
                         direction = "float",
                         float_opts = {
                                 border = "rounded",
-                                winblend = 15
                         }
                 }
         },
@@ -148,5 +147,8 @@ require("lazy").setup({
                                 ["ddu-ff-filter"] = false
                         }
                 end
+        },
+        {
+                "dstein64/vim-startuptime"
         }
 })

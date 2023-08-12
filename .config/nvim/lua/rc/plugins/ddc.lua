@@ -27,7 +27,7 @@ return {
                         end
                 },
                 "Shougo/ddc-ui-pum",
-                "Shougo/ddc-source-codeium",
+                { "Shougo/ddc-source-codeium", dependencies = "codeium.vim" },
                 "Shougo/ddc-source-around",
                 "Shougo/ddc-source-nvim-lsp",
                 "LumaKernel/ddc-source-file",
