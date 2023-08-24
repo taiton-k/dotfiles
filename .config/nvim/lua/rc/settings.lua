@@ -117,8 +117,8 @@ vim.opt.matchpairs:append("<:>")
 vim.opt.showmatch = false
 
 vim.opt.sidescroll = 1
-vim.opt.sidescrolloff = 16
-vim.opt.scrolloff = 12
+vim.opt.sidescrolloff = 6
+vim.opt.scrolloff = 6
 
 vim.opt.modeline = false
 vim.opt.modelines = 0
@@ -148,6 +148,13 @@ vim.opt.statusline = "%="
 
 vim.api.nvim_create_autocmd("FileType", {
         pattern = "markdown",
+        callback = function()
+                vim.opt_local.wrap = true
+        end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+        pattern = "text",
         callback = function()
                 vim.opt_local.wrap = true
         end
