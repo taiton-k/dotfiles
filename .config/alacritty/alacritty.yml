@@ -1,0 +1,22 @@
+window:
+        opacity: 0.8
+font:
+        normal:
+                family: PlemolJP Console NF
+                style: Medium
+        bold:
+                family: PlemolJP Console NF
+                style: Bold
+        italic:
+                family: PlemolJP Console NF
+                style: Medium Italic
+        bold_italic:
+                family: PlemolJP Console NF
+                style: Bold Italic
+        size: 8
+        offset:
+                x: 1
+colors:
+        primary:
+                background: '#1e1e29'
+                foreground: '#d1d1dd'
