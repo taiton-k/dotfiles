@@ -131,6 +131,7 @@ require("lazy").setup({
                                 },
                                 inputs = {
                                         ccc.input.rgb,
+                                        ccc.input.oklch,
                                         ccc.input.hsl,
                                         ccc.input.hsv
                                 }

@@ -1,28 +1,28 @@
 local palette = {
-        base00 = "#1e1e29", -- Default Background
-        base01 = "#2d2d3e", -- Lighter Background (Used for status bars, line number and folding marks)
-        base02 = "#3d3d52", -- Selection Background
-        base03 = "#8a8aa8", -- Comments, Invisibles, Line Highlighting
-        base04 = "#adadc2", -- Dark Foreground (Used for status bars)
-        base05 = "#d1d1dd", -- Default Foreground, Caret, Delimiters, Operators
-        base06 = "#e2e2e9", -- Light Foreground (Not often used)
-        base07 = "#f4f4f7", -- Light Background (Not often used)
-        base08 = "#afaffd", -- Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-        base09 = "#afd6fd", -- Integers, Boolean, Constants, XML Attributes, Markup Link Url
-        base0A = "#b8b8f4", -- Classes, Markup Bold, Search Text Background
-        base0B = "#d6affd", -- Strings, Inherited Class, Markup Code, Diff Inserted
-        base0C = "#d6affd", -- Support, Regular Expressions, Escape Characters, Markup Quotes
-        base0D = "#b8d6f4", -- Functions, Methods, Attribute IDs, Headings
-        base0E = "#b8b8f4", -- Keywords, Storage, Selector, Markup Italic, Diff Changed
-        base0F = "#b8b8f4", -- Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
+        base00 = "#070c1e", -- Default Background
+        base01 = "#171e32", -- Lighter Background (Used for status bars, line number and folding marks)
+        base02 = "#2b3248", -- Selection Background
+        base03 = "#7f88a2", -- Comments, Invisibles, Line Highlighting
+        base04 = "#9ba4be", -- Dark Foreground (Used for status bars)
+        base05 = "#b7c0dc", -- Default Foreground, Caret, Delimiters, Operators
+        base06 = "#d3ddf9", -- Light Foreground (Not often used)
+        base07 = "#ffffff", -- Light Background (Not often used)
+        base08 = "#87a0f0", -- Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+        base09 = "#56dac4", -- Integers, Boolean, Constants, XML Attributes, Markup Link Url
+        base0A = "#b7c0dc", -- Classes, Markup Bold, Search Text Background
+        base0B = "#dfbd5f", -- Strings, Inherited Class, Markup Code, Diff Inserted
+        base0C = "#dfbd5f", -- Support, Regular Expressions, Escape Characters, Markup Quotes
+        base0D = "#b093e5", -- Functions, Methods, Attribute IDs, Headings
+        base0E = "#d5bf85", -- Keywords, Storage, Selector, Markup Italic, Diff Changed
+        base0F = "#9ba4be", -- Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 
-        red = "#ffadad",
-        orange = "#ffd6ac",
-        yellow = "#ffffac",
-        green = "#adffad",
-        teal = "#adffff",
-        skyblue = "#aed7ff",
-        blue = "#adadff",
+        red = "#fab8ac",
+        orange = "#f2bf96",
+        yellow = "#dfc98e",
+        green = "#a6daaf",
+        teal = "#8fdccc",
+        skyblue = "#8ad9e7",
+        blue = "#b6c9ff",
 }
 
 local transparent = true
@@ -35,6 +35,8 @@ end
 local function hl(name, table)
         vim.api.nvim_set_hl(0, name, table)
 end
+
+hl("IndentBlankLine", { fg = palette.base03 })
 
 hl("ColorColumn", { bg = palette.base01 })
 hl("Conceal", { fg = palette.base0D })

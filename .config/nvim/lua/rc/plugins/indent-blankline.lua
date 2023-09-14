@@ -3,14 +3,10 @@ return {
         config = function ()
                 require("indent_blankline").setup({
                         char_highlight_list = {
-                                "Special",
-                                "Function",
-                                "Type",
+                                "IndentBlankLine",
                         },
                         space_char_highlight_list = {
-                                "Special",
-                                "Function",
-                                "Type",
+                                "IndentBlankLine",
                         },
                         show_trailing_blankline_indent = false,
                         filetype_exclude = { "help", "" },
