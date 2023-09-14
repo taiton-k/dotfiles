@@ -34,9 +34,9 @@ main = xmonad $ withSB myPolybarConf $ ewmhFullscreen $ ewmh $ docks $ def {
         terminal           = "alacritty",
         focusFollowsMouse  = True,
         clickJustFocuses   = True,
-        borderWidth        = 3,
+        borderWidth        = 0,
         modMask            = mod4Mask,
-        workspaces         = withScreens 2 ["web", "coding", "terminal", "game", "other"],
+        workspaces         = ["web", "coding", "terminal", "game", "other"],
         normalBorderColor  = "#1e1e29",
         focusedBorderColor = "#afaffd",
 
@@ -95,8 +95,8 @@ myKeymaps conf = [
                 ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -500"),
                 ("<XF86AudioMute>", spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
         ] ++ [
-                ("M-" ++ m ++ show k, windows $ onCurrentScreen f i) |
-                        (i, k) <- zip (workspaces' conf) [1 .. 5],
+                ("M-" ++ m ++ show k, windows $ f i) |
+                        (i, k) <- zip (workspaces conf) [1 .. 5],
                         (f, m) <- [(W.greedyView, ""), (W.shift, "S-")]
         ]
 
@@ -118,5 +118,5 @@ mySPconf = [
                 NS "Terminal"
                 "alacritty --title Terminal"
                 (title =? "Terminal")
-                (customFloating $ W.RationalRect 0.25 0.25 0.5 0.5)
+                (customFloating $ W.RationalRect 0.15 0.15 0.7 0.7)
         ]
