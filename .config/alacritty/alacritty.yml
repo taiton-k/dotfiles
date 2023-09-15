@@ -1,5 +1,5 @@
 window:
-        opacity: 0.8
+        opacity: 0.7
 font:
         normal:
                 family: PlemolJP Console NF
@@ -18,5 +18,5 @@ font:
                 x: 1
 colors:
         primary:
-                background: '#1e1e29'
-                foreground: '#d1d1dd'
+                background: '#070c1e'
+                foreground: '#b7c0dc'
