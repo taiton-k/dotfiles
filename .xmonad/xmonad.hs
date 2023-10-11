@@ -106,8 +106,8 @@ myLayoutHook = layout1 ||| layout2 ||| layout3
                 layout2 = lessBorders OnlyScreenFloat $ makeSpace Full
                 layout3 = noBorders Full
                 makeSpace layout = spacingRaw  False layoutSpace True windowSpace True $ avoidStruts layout
-                layoutSpace = Border 10 10 10 10
-                windowSpace = Border 10 10 10 10
+                layoutSpace = Border 16 16 16 16
+                windowSpace = Border 16 16 16 16
 
 myPolybarConf = def {
         sbStartupHook = spawn "sleep 0.1; ~/.config/polybar/launch.sh",
