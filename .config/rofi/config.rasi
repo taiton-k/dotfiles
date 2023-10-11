@@ -10,14 +10,14 @@ configuration {
 
 * {
         background:        transparent;
-        foreground:        #d1d1dd;
-        selected:          #3d3d52C0;
+        foreground:        #b7c0dc;
+        selected:          #3f475eC0;
 }
 
 window {
 	font: "PlemolJP Console NF 12";
         trasparency: "real";
-        background-color: #1e1e29D0;
+        background-color: #181e32D0;
         border: 0;
         margin: 0;
 }

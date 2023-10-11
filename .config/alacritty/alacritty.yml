@@ -18,5 +18,5 @@ font:
                 x: 1
 colors:
         primary:
-                background: '#070c1e'
+                background: '#181e32'
                 foreground: '#b7c0dc'
